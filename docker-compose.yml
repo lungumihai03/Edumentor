@@ -1,0 +1,53 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: edumentor
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_dev_password}
+      POSTGRES_DB: edumentor
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infrastructure/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U edumentor -d edumentor"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  ai:
+    build: ./ai-service
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash}
+      GEMINI_EMBEDDING_MODEL: ${GEMINI_EMBEDDING_MODEL:-gemini-embedding-001}
+    ports: ["8000:8000"]
+
+  api:
+    build: ./backend
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__Default: Host=db;Database=edumentor;Username=edumentor;Password=${POSTGRES_PASSWORD:-local_dev_password}
+      AI_SERVICE_URL: http://ai:8000
+      JWT_SECRET: ${JWT_SECRET:-CHANGE_THIS_TO_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@edumentor.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
+      UPLOAD_DIR: /app/uploads
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-20}
+    volumes:
+      - uploads:/app/uploads
+    depends_on:
+      db: { condition: service_healthy }
+      ai: { condition: service_started }
+    ports: ["8080:8080"]
+
+  web:
+    build: ./frontend
+    environment:
+      VITE_API_URL: http://localhost:8080
+    depends_on: [api]
+    ports: ["5173:5173"]
+
+volumes:
+  pgdata:
+  uploads:
