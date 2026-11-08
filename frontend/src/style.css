@@ -72,3 +72,47 @@
 .public-footer>a:last-child{color:#315d52;font-weight:800;text-decoration:none}
 @media(max-width:850px){.public-hero{grid-template-columns:1fr;padding-top:55px}.public-visual{height:300px}.public-intro{gap:30px}.public-module-grid{grid-template-columns:repeat(2,1fr)}.public-resource-grid{grid-template-columns:repeat(2,1fr)}.flow-steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.public-header{height:auto;padding:16px 18px;align-items:flex-start}.public-header nav{gap:10px;flex-wrap:wrap;justify-content:flex-end}.public-header nav>a{display:none}.public-login{padding:10px 12px;font-size:11px}.public-hero{padding:45px 20px 50px}.public-hero h1{letter-spacing:-1.8px}.public-hero-copy>p{font-size:14px}.public-proof{gap:10px}.public-visual{height:270px}.orbit-a{width:250px}.orbit-b{width:190px}.public-core{width:115px;height:115px}.float-a{left:0;top:28px}.float-b{right:0;top:115px}.float-c{left:15px;bottom:20px}.public-intro,.public-modules,.public-flow,.public-resources,.public-note,.public-bottom-cta{padding:55px 20px}.public-intro{grid-template-columns:1fr;gap:20px}.public-module-grid,.public-resource-grid,.flow-steps{grid-template-columns:1fr}.public-module{min-height:auto}.public-resource{min-height:170px}.public-note{grid-template-columns:1fr;padding:28px 22px;margin:0 14px 50px}.public-note-icon{display:none}.public-footer{padding:20px;flex-wrap:wrap}.public-footer>span{order:3;width:100%}}
+
+
+/* Puntea Edu MD integration inside authenticated EduMentor */
+.puntea-page{display:grid;gap:24px}
+.puntea-hero{background:linear-gradient(115deg,#123f45,#287568);color:#fff;border-radius:16px;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.puntea-hero h2{font:800 clamp(25px,3vw,36px)/1.15 Manrope;margin:12px 0;max-width:760px}
+.puntea-hero p{color:#d8e9e3;max-width:760px;line-height:1.65;font-size:13px}
+.puntea-count{min-width:125px;height:125px;border-radius:50%;border:1px solid #ffffff55;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#e1f19a}
+.puntea-count b{font:800 28px Manrope;color:#fff}.puntea-count span{font-size:10px;color:#d9e8e1}
+.puntea-path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.puntea-path article{background:#fff;border:1px solid #e4ece7;border-radius:12px;padding:17px}
+.puntea-path article>span{color:#448577;font:800 12px Manrope}
+.puntea-path h3{font:700 14px Manrope;margin:10px 0 6px}
+.puntea-path p{font-size:11px;color:#758680;line-height:1.55;margin:0}
+.puntea-catalog{background:#fff;border:1px solid #e5ece8;border-radius:14px;padding:23px}
+.puntea-result-count{font-size:12px;color:#517b70;background:#edf5f0;padding:8px 11px;border-radius:20px;white-space:nowrap}
+.puntea-controls{display:grid;grid-template-columns:1fr 220px;gap:12px;margin:18px 0 13px}
+.puntea-search,.puntea-select{height:45px;border:1px solid #dce7e1;border-radius:9px;display:flex;align-items:center;gap:10px;padding:0 13px;color:#64877c;margin:0!important}
+.puntea-search input,.puntea-select select{border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;width:100%;padding:8px 0!important;color:#29483f}
+.puntea-filters{display:flex;align-items:center;gap:7px;flex-wrap:wrap;color:#719087;margin:12px 0 20px}
+.puntea-filters button{border:1px solid #e0e9e4;background:#f8faf8;color:#58746a;border-radius:20px;padding:7px 11px;font-size:10px;font-weight:700}
+.puntea-filters button.selected{background:#1e6258;color:white;border-color:#1e6258}
+.puntea-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.puntea-card{border:1px solid #e5ece8;border-radius:12px;padding:17px;display:flex;flex-direction:column;min-width:0}
+.puntea-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.puntea-card-top>span{font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:800;color:#398071;background:#edf6f1;padding:5px 8px;border-radius:15px}
+.puntea-card-top small{display:flex;align-items:center;gap:4px;color:#9a7130;font-size:10px}
+.puntea-card-top em{font-style:normal;font-size:9px;color:#9c5a3f;background:#fff1eb;padding:5px 8px;border-radius:15px}
+.puntea-card h4{font:700 16px/1.35 Manrope;margin:13px 0 4px;color:#1d3834}
+.puntea-provider{font-size:10px!important;color:#4e8376!important;font-weight:700;margin:0 0 9px!important}
+.puntea-card>p{font-size:12px;color:#71817a;line-height:1.55;margin:5px 0 10px}
+.puntea-detail{display:grid;grid-template-columns:110px 1fr;gap:8px;padding:8px 0;border-top:1px solid #eff3f0;font-size:10px;line-height:1.5}
+.puntea-detail b,.puntea-next b{color:#405c53}
+.puntea-detail span,.puntea-next span{color:#72817b}
+.puntea-next{display:grid;gap:4px;background:#f3f8f4;border-radius:8px;padding:10px;margin-top:7px;font-size:10px;line-height:1.5}
+.puntea-card-actions{display:flex;gap:16px;align-items:center;margin-top:14px;padding-top:11px;border-top:1px solid #edf1ee}
+.puntea-card-actions a,.puntea-card-actions button,.puntea-references a{display:inline-flex;align-items:center;gap:5px;color:#236d5e;text-decoration:none;font-size:11px;font-weight:700}
+.puntea-card-actions button{border:0;background:transparent;padding:0}
+.puntea-references{display:grid;gap:7px;padding:10px;background:#f7faf8;border-radius:8px;margin-top:10px}
+.puntea-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
+.puntea-tags span{font-size:9px;color:#73877e;border:1px solid #e5ece8;border-radius:15px;padding:4px 7px}
+.puntea-disclaimer{font-size:10px;color:#8a9891;line-height:1.55;margin:16px 0 0}
+@media(max-width:1000px){.puntea-path{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.puntea-hero{padding:22px;align-items:flex-start}.puntea-count{min-width:88px;height:88px}.puntea-count b{font-size:22px}.puntea-count span{font-size:8px}.puntea-controls{grid-template-columns:1fr}.puntea-grid{grid-template-columns:1fr}.puntea-catalog{padding:15px}.puntea-path{grid-template-columns:1fr 1fr}.puntea-detail{grid-template-columns:95px 1fr}}
