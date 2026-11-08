@@ -14,7 +14,9 @@ var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? "";
 if (jwtSecret.Length < 32) throw new Exception("JWT_SECRET trebuie să aibă cel puțin 32 caractere.");
 builder.Services.AddSingleton(_ => NpgsqlDataSource.Create(cs));
 builder.Services.AddHttpClient("AI", c => { c.BaseAddress = new Uri(Environment.GetEnvironmentVariable("AI_SERVICE_URL") ?? "http://ai:8000"); c.Timeout = TimeSpan.FromSeconds(120); });
-builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod()));
+var allowedOrigins = (Environment.GetEnvironmentVariable("FRONTEND_ORIGINS") ?? "http://localhost:5173;http://127.0.0.1:5173")
+    .Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod()));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o => {
  o.TokenValidationParameters = new TokenValidationParameters { ValidateIssuer=false, ValidateAudience=false, ValidateLifetime=true, ValidateIssuerSigningKey=true, IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)), ClockSkew=TimeSpan.FromSeconds(30) };
 });

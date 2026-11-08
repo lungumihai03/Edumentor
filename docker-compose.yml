@@ -27,6 +27,7 @@ services:
     build: ./backend
     environment:
       ASPNETCORE_URLS: http://+:8080
+      FRONTEND_ORIGINS: ${FRONTEND_ORIGINS:-http://localhost:5173;http://127.0.0.1:5173}
       ConnectionStrings__Default: Host=db;Database=edumentor;Username=edumentor;Password=${POSTGRES_PASSWORD:-local_dev_password}
       AI_SERVICE_URL: http://ai:8000
       JWT_SECRET: ${JWT_SECRET:-CHANGE_THIS_TO_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS}
